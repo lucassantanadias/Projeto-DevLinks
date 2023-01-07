@@ -117,7 +117,7 @@ ul li a:hover {
 #footer {
   display: flex;
   justify-content: center;
-  gap: 6px;
+  gap: 5px;
   padding: 24px;
   font-size: 14px;
 }
@@ -175,6 +175,9 @@ ul li a:hover {
 
   /*esse transform:translatey permite que mova o botão de maneira que eu posso deixá-lo bem alinhado com o span. y movimenta na vertical (o sinal de - é para ele mover para cima, se eu tirar, ele move para baixo.) o translatex move para a horizontal (com o sinal de - eu movo para a esquerda e, sem o sinal, eu movo para a direita).*/
   transform: translatey(-10%);
+
+  /*aplicando a suavidade no botão ao fazer o movimento de transição.*/
+  animation: slide-in-right 0.4s;
 }
 
 /*mexendo no span do swicth*/
@@ -205,13 +208,16 @@ ul li a:hover {
 /*mudando o posicionamento do botão*/
 .light #switch button {
   /*rigth, porque lá está como left.*/
-  right: 0;
-
+  /*right: 0;*/
   /*initial para ele voltar a posição inicial*/
-  left: initial;
+  /*left: initial;*/
+
+  /*não preciso mais colocar do jeito acima, porque posso usar a animação que eu criei com o @keyframes*/
+  animation: slide-in 0.4s forwards;
+  /*a animação tem um começo e fim, quando ela termina, volta ao estado inicial. No caso, o botão não ficaria parado na direira, ele voltaria para a esquerda. por isso, usa-se o "forwards" para ele ficar na posição final, na direita.*/
 }
 
-/*media queries*/
+/*at rules. começam com o @*/
 /*estou dizendo que superior a 700px ele coloque as configurções que estão dentro do @media*/
 @media (min-width: 700px) {
   :root {
@@ -220,4 +226,29 @@ ul li a:hover {
   .light {
     --bg-url: url(./assets/bg-desktop-light.jpg);
   }
+}
+
+/*at rules de animação*/
+/*configurando para o botão deslizar suavemente*/
+@keyframes slide-in {
+  /*comece no 0*/
+  from {
+    left: 0;
+  }
+  /*para 50%*/
+  to {
+    left: 50%;
+  }
+}
+@keyframes slide-in-right {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0;
+  }
+}
+
+#switch button:hover {
+  outline: 8px solid var(--highlight-color);
 }
