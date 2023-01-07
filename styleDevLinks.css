@@ -7,6 +7,7 @@ body {
   /*posso agrupar os background para não poluir o código.*/
 
   background: var(--bg-url) no-repeat top center/ cover;
+  height: 100vw;
 }
 
 #container {
@@ -23,7 +24,7 @@ body {
 /*profile*/
 #profile img {
   width: 112px;
-  height: 112px; /*geralmente, no css, não precisa colocar uma altura, pois a caixa segue o conteúdo d página.*/
+  height: 112px; /*geralmente, no css, não precisa colocar uma altura, pois a caixa segue o conteúdo da página.*/
   /*margin: auto; para a caixa da foto ficar centralizada.*/
   /*display: block; img é uma tag inline, para eu mexer no posicionamneto, eu preciso transformar em block.*/
 }
@@ -35,11 +36,11 @@ body {
 }
 
 #profile p {
-  /*vou usar para mexer no texto.*/
+  /*vou usar para mexer no texto abaixo da foto.*/
 
   font-weight: 500; /*é um bold, negrito*/
   font-size: 16px; /*por padrão, os navegadores já colocam o tamanho da font com 16px, não sendo relevante colocar.*/
-  line-height: 24px; /*altura da linha em relação a foto e o texto.*/
+  line-height: 24px; /*distância do texto para a foto em cima..*/
   margin-top: 8px;
 }
 
@@ -62,18 +63,18 @@ body * {
 ul {
   list-style: none; /*para tirar os pontos da lista não ordenada*/
   display: flex;
-  flex-direction: column; /*eu preciso colocar essa tag para dizer ao gab como eu quero distaciar o elemneto, nesse caso, na vertical.*/
-  gap: 16px; /*dar espaços na vertical nos itens da lista*/
+  flex-direction: column; /*eu preciso colocar essa tag para dizer ao gab como eu quero distaciar o elemento, nesse caso, na vertical.*/
+  gap: 16px; /*é o espaço entre um bloco e outro da lista.*/
   padding: 24px 0px; /*distância entre o quadrado e os ícones.*/
 }
 
 ul li a {
-  display: flex; /*quando é display flex, eu uso as opções abaixo para alinhar.*/
-  justify-content: center; /*serve para movimentar os textos da lista.*/
+  display: flex; /*quando é display flex, eu uso as opções abaixo para deixar centralizado.*/
+  justify-content: center; /*serviu para centralizar o texto no retângulo.*/
   align-items: center; /*alinhar os itens afastando eles da borda*/
 
   padding: 16px 24px;
-  background: var(--surface-color); /*a cor de fundo do texto da lista.*/
+  background: var(--surface-color); /*a cor de fundo do retângulo.*/
   border: 1px solid var(--stroke-color); /*cor da borda*/
   border-radius: 8px; /*arredontamneto de borda*/
   backdrop-filter: blur(4px); /*coloca um leve embaçado*/
@@ -116,7 +117,7 @@ ul li a:hover {
 #footer {
   display: flex;
   justify-content: center;
-  gap: 5px;
+  gap: 6px;
   padding: 24px;
   font-size: 14px;
 }
@@ -208,4 +209,15 @@ ul li a:hover {
 
   /*initial para ele voltar a posição inicial*/
   left: initial;
+}
+
+/*media queries*/
+/*estou dizendo que superior a 700px ele coloque as configurções que estão dentro do @media*/
+@media (min-width: 700px) {
+  :root {
+    --bg-url: url(./assets/bg-desktop-dark.jpg);
+  }
+  .light {
+    --bg-url: url(./assets/bg-desktop-light.jpg);
+  }
 }
